@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>YouTube Video Data Retriever</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        };
+
+        // Apply saved theme before page renders
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* Main title - SAME as SEO page */
+        .main-title {
+            background: linear-gradient(90deg,
+                    #2563eb,
+                    #22c55e);
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+
+        /* Header - SAME as SEO page */
+        .gradient-header {
+            background: linear-gradient(135deg,
+                    rgba(37, 99, 235, .08),
+                    rgba(34, 197, 94, .08));
+
+            border: 1px dashed #e2e8f0;
+        }
+
+
+        /* Tags - SAME green combination */
+        .tag {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid #e2e8f0;
+
+            transition:
+                transform .1s ease,
+                background .2s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-1px);
+            background: rgba(34, 197, 94, 0.22);
+        }
+
+
+        /* Error */
+        .error {
+            background: rgba(239, 68, 68, 0.12);
+            color: #ef4444;
+            border-left: 4px solid #ef4444;
+        }
+
+
+        /* Success */
+        .success {
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
+            border-left: 4px solid #10b981;
+        }
+
+
+        /* Dark mode */
+        .dark .gradient-header {
+            border-color: #334155;
+        }
+
+        .dark .tag {
+            border-color: #334155;
+        }
+
+
+        /* Thumbnail */
+        .thumb-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .dark .thumb-box {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+
+        /* Description */
+        .desc-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+
+            color: #334155;
+
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .dark .desc-box {
+            background: #1e293b;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 min-h-screen
+             dark:bg-slate-900 dark:text-slate-100
+             transition-colors duration-300">
+
+    <!-- Navbar -->
+    <div th:replace="fragments/navbar :: navbar" th:with="activePage='video'">
+    </div>
+
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 max-w-2xl mt-12 pb-12">
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+
+            <h1 class="main-title text-4xl md:text-5xl font-extrabold mb-4">
+                YouTube Video Data Retriever
+            </h1>
+
+            <div class="gradient-header rounded-xl p-4 mt-6">
+
+                <p class="text-slate-600 dark:text-slate-400 text-lg mb-0">
+                    Enter a YouTube video URL or ID to fetch complete video information.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Form -->
+        <div class="bg-white dark:bg-slate-800
+                    rounded-2xl
+                    border border-slate-200 dark:border-slate-700
+                    shadow-lg
+                    p-6 mb-8
+                    transition-colors duration-300">
+
+            <form th:action="@{/youtube/video-details}" method="post">
+
+                <label for="videoUrlOrId" class="block text-sm font-medium
+                              text-slate-700 dark:text-slate-300 mb-2">
+
+                    YouTube Video URL or ID
+
+                </label>
+
+                <input type="text" id="videoUrlOrId" name="videoUrlOrId" class="w-full px-4 py-3
+                              border border-slate-300 dark:border-slate-600
+                              rounded-lg
+                              bg-white dark:bg-slate-700
+                              text-slate-900 dark:text-slate-100
+                              placeholder-slate-400
+                              mb-4" required th:value="${videoUrlOrId}">
+
+
+                <button type="submit" class="bg-blue-600
+                               hover:bg-blue-700
+                               text-white
+                               font-medium
+                               py-3 px-6
+                               rounded-lg
+                               shadow-lg
+                               transition">
+
+                    Fetch Video Data
+
+                </button>
+
+            </form>
+
+
+            <!-- Error -->
+            <div th:if="${error}" class="bg-red-50 dark:bg-red-900/20
+                        border border-red-200 dark:border-red-800
+                        text-red-700 dark:text-red-300
+                        rounded-lg p-4 mt-4" th:text="${error}">
+            </div>
+
+        </div>
+
+
+        <!-- Result Section -->
+        <div th:if="${videoDetails != null}">
+
+            <div class="bg-white dark:bg-slate-800
+                        rounded-2xl
+                        border border-slate-200 dark:border-slate-700
+                        shadow-lg
+                        p-6
+                        transition-colors duration-300">
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+
+                    <!-- Thumbnail -->
+                    <div>
+
+                        <div class="thumb-box">
+
+                            <img th:src="${videoDetails.thumbnailUrl}" th:alt="${videoDetails.title}"
+                                class="w-full h-auto block">
+
+                        </div>
+
+
+                        <!-- Download -->
+                        <div class="mt-4 flex justify-end">
+
+                            <a class="bg-blue-600
+                                      hover:bg-blue-700
+                                      text-white
+                                      text-sm
+                                      font-medium
+                                      py-2 px-4
+                                      rounded-lg
+                                      transition" th:href="@{/download-thumbnail(videoId=${videoDetails.videoId})}">
+
+                                <i class="bi bi-download"></i>
+                                Download
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Video Information -->
+                    <div>
+
+                        <!-- Title -->
+                        <h2 class="font-bold
+                                   text-slate-900 dark:text-slate-100
+                                   mb-2">
+
+                            <i class="bi bi-film text-blue-500"></i>
+
+                            <span th:text="${videoDetails.title}">
+                            </span>
+
+                        </h2>
+
+
+                        <!-- Channel + Date -->
+                        <div class="text-slate-600 dark:text-slate-400 mb-4">
+
+                            <i class="bi bi-person-video"></i>
+
+                            <span th:text="${videoDetails.channelTitle}">
+                            </span>
+
+                            &bull;
+
+                            <i class="bi bi-calendar3"></i>
+
+                            <span th:text="${videoDetails.publishedAt}">
+                            </span>
+
+                        </div>
+
+
+                        <!-- Description -->
+                        <div class="mb-6">
+
+                            <h3 class="font-bold
+                                       text-slate-900 dark:text-slate-100
+                                       mb-2">
+
+                                <i class="bi bi-text-paragraph text-blue-500"></i>
+
+                                Description
+
+                            </h3>
+
+
+                            <div class="desc-box" th:text="${videoDetails.description != null
+                                 ? videoDetails.description
+                                 : 'No description available.'}">
+                            </div>
+
+                        </div>
+
+
+                        <!-- Tags -->
+                        <div>
+
+                            <h3 class="font-bold
+                                       text-slate-900 dark:text-slate-100
+                                       mb-2">
+
+                                <i class="bi bi-tags text-blue-500"></i>
+
+                                Tags
+
+                            </h3>
+
+
+                            <!-- Tags available -->
+                            <div th:if="${videoDetails.tags != null
+                                         and videoDetails.tags.size() > 0}">
+
+                                <span th:each="tag : ${videoDetails.tags}" class="tag
+                                             inline-flex
+                                             items-center
+                                             px-3 py-2
+                                             mr-2 mb-2
+                                             text-sm">
+
+                                    <i class="bi bi-hash"></i>
+
+                                    <span th:text="${tag}"></span>
+
+                                </span>
+
+                            </div>
+
+
+                            <!-- No tags -->
+                            <div th:if="${videoDetails.tags == null
+                                         or videoDetails.tags.size() == 0}"
+                                class="text-slate-500 dark:text-slate-400 italic">
+
+                                No tags available.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function copyToClipboard(text) {
+
+            navigator.clipboard.writeText(text)
+
+                .then(() => {
+                    alert("Copied!");
+                })
+
+                .catch(() => {
+                    alert("Could not copy text.");
+                });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

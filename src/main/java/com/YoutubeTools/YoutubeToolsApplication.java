@@ -1,0 +1,13 @@
+package com.YoutubeTools;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class YoutubeToolsApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(YoutubeToolsApplication.class, args);
+	}
+
+}
