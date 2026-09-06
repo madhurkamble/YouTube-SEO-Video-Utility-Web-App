@@ -1,59 +1,72 @@
+Yes. According to your screenshot, the **exact screenshot filenames** are:
+
+* `Home_SC.png`
+* `SEO_Tags_1.png`
+* `SEO_Tags_2.png`
+* `Thumbnail_Downloader.png`
+* `YT_Video_Data_Retriever.png`
+* `Dark_Theme.png`
+
+Here is the **complete updated README.md** using those exact names and your actual GitHub/LinkedIn links:
+
+````markdown
 # 🎬 YouTube Tools
 
 A **Spring Boot-based web application** that provides useful tools for YouTube creators, including **SEO tag generation, thumbnail downloading, and video data retrieval**.
+
+---
 
 ## 🚀 Features
 
 ### 🔍 YouTube SEO Tag Generator
 
-* Enter a YouTube video title.
-* Search for related YouTube videos.
-* Extract SEO tags from similar videos.
-* Display tags from the primary and related videos.
-* Copy individual tags or all tags to the clipboard.
+- Enter a YouTube video title.
+- Search for related YouTube videos.
+- Extract SEO tags from similar videos.
+- Display tags from the primary and related videos.
+- Copy individual tags or all tags to the clipboard.
 
 ### 🖼️ YouTube Thumbnail Downloader
 
-* Enter a YouTube video URL or video ID.
-* Automatically extract the video ID.
-* Fetch and preview the video thumbnail.
-* Download the thumbnail as an image.
+- Enter a YouTube video URL or video ID.
+- Automatically extract the video ID.
+- Fetch and preview the video thumbnail.
+- Download the thumbnail as an image.
 
 ### 📊 YouTube Video Data Retriever
 
-* Enter a YouTube video URL or ID.
-* Retrieve video information including:
-
-  * Video title
-  * Channel name
-  * Published date
-  * Description
-  * Tags
-  * Thumbnail
-* Preview the thumbnail.
-* Download the thumbnail.
+- Enter a YouTube video URL or ID.
+- Retrieve complete video information including:
+  - Video title
+  - Channel name
+  - Published date
+  - Description
+  - Tags
+  - Thumbnail
+- Preview the thumbnail.
+- Download the thumbnail.
 
 ### 🌙 Light & Dark Mode
 
-* Light mode and dark mode.
-* Theme preference is saved using browser `localStorage`.
-* Consistent **Blue + Green + Slate** color combination.
-* Responsive user interface.
+- Light mode and dark mode.
+- Theme preference is saved using browser `localStorage`.
+- Consistent **Blue + Green + Slate** color combination.
+- Responsive user interface.
 
 ---
 
 ## 🛠️ Technologies Used
 
-* **Java 21**
-* **Spring Boot**
-* **Spring MVC**
-* **Spring WebFlux / WebClient**
-* **Thymeleaf**
-* **Tailwind CSS**
-* **Bootstrap Icons**
-* **Lombok**
-* **YouTube Data API v3**
-* **Maven**
+- **Java 21**
+- **Spring Boot**
+- **Spring MVC**
+- **Spring WebFlux / WebClient**
+- **Thymeleaf**
+- **Tailwind CSS**
+- **Bootstrap Icons**
+- **Lombok**
+- **YouTube Data API v3**
+- **Maven**
 
 ---
 
@@ -97,35 +110,51 @@ YoutubeTools
 │           │
 │           └── application.properties
 │
-├── screenshots
-│   ├── home.png
-│   ├── thumbnail.png
-│   ├── video-details.png
-│   └── dark-mode.png
+├── OUTPUT_SS
+│   ├── Home_SC.png
+│   ├── SEO_Tags_1.png
+│   ├── SEO_Tags_2.png
+│   ├── Thumbnail_Downloader.png
+│   ├── YT_Video_Data_Retriever.png
+│   └── Dark_Theme.png
 │
 ├── pom.xml
 └── README.md
-```
+````
 
 ---
 
 ## 📸 Screenshots
 
-### 🏠 YouTube SEO Tag Generator
+### 🏠 Home Page
 
-![YouTube SEO Tag Generator](screenshots/home.png)
+![YouTube Tools Home Page](OUTPUT_SS/Home_SC.png)
 
-### 🖼️ YouTube Thumbnail Downloader
+---
 
-![YouTube Thumbnail Downloader](screenshots/thumbnail.png)
+### 🔍 SEO Tags Generator
+
+![SEO Tags Generator](OUTPUT_SS/SEO_Tags_1.png)
+
+![SEO Tags Generator Results](OUTPUT_SS/SEO_Tags_2.png)
+
+---
+
+### 🖼️ Thumbnail Downloader
+
+![YouTube Thumbnail Downloader](OUTPUT_SS/Thumbnail_Downloader.png)
+
+---
 
 ### 📊 YouTube Video Data Retriever
 
-![YouTube Video Data Retriever](screenshots/video-details.png)
+![YouTube Video Data Retriever](OUTPUT_SS/YT_Video_Data_Retriever.png)
 
-### 🌙 Dark Mode
+---
 
-![Dark Mode](screenshots/dark-mode.png)
+### 🌙 Dark Theme
+
+![YouTube Tools Dark Theme](OUTPUT_SS/Dark_Theme.png)
 
 ---
 
@@ -134,11 +163,11 @@ YoutubeTools
 ### 1. Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_LINK
+git clone https://github.com/madhurkamble/YouTube-SEO-Video-Utility-Web-App.git
 ```
 
 ```bash
-cd YoutubeTools
+cd YouTube-SEO-Video-Utility-Web-App
 ```
 
 ### 2. Configure YouTube API
@@ -191,7 +220,7 @@ http://localhost:8080
 
 ## 🔑 YouTube Data API
 
-The application uses **YouTube Data API v3** for retrieving YouTube information.
+The application uses **YouTube Data API v3** to retrieve YouTube information.
 
 The API is used for:
 
@@ -220,11 +249,11 @@ color combination.
 
 ### Dark Mode
 
-* Slate dark background
+* Dark slate background
 * Dark slate cards
 * Blue primary buttons
 * Green tag accents
-* Preserved blue-to-green gradient design
+* Blue-to-green gradient headings
 
 ---
 
@@ -288,8 +317,17 @@ User
 
 ## 🔗 Links
 
-* 🐙 **GitHub:** [View Source Code](YOUR_GITHUB_REPOSITORY_LINK)
-* 💼 **LinkedIn:** [Connect with me](YOUR_LINKEDIN_PROFILE_LINK)
+### 🐙 GitHub Repository
+
+[https://github.com/madhurkamble/YouTube-SEO-Video-Utility-Web-App.git](https://github.com/madhurkamble/YouTube-SEO-Video-Utility-Web-App.git)
+
+### 🐙 GitHub Profile
+
+[https://github.com/madhurkamble](https://github.com/madhurkamble)
+
+### 💼 LinkedIn
+
+[https://linkedin.com/in/madhur-kamble-55911b290](https://linkedin.com/in/madhur-kamble-55911b290)
 
 ---
 
@@ -297,8 +335,10 @@ User
 
 ### Madhur Kamble
 
-* 🐙 GitHub: [Madhur Kamble](YOUR_GITHUB_PROFILE_LINK)
-* 💼 LinkedIn: [Madhur Kamble](YOUR_LINKEDIN_PROFILE_LINK)
+Computer Engineering Student & Developer
+
+* 🐙 GitHub: [https://github.com/madhurkamble](https://github.com/madhurkamble)
+* 💼 LinkedIn: [https://linkedin.com/in/madhur-kamble-55911b290](https://linkedin.com/in/madhur-kamble-55911b290)
 
 ---
 
