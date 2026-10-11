@@ -1,5 +1,3 @@
-
-````markdown
 # 🎬 YouTube Tools
 
 A **Spring Boot-based web application** that provides useful tools for YouTube creators, including **SEO tag generation, thumbnail downloading, and video data retrieval**.
@@ -13,8 +11,8 @@ A **Spring Boot-based web application** that provides useful tools for YouTube c
 - Enter a YouTube video title.
 - Search for related YouTube videos.
 - Extract SEO tags from similar videos.
-- Display tags from the primary and related videos.
-- Copy individual tags or all tags to the clipboard.
+- Display tags from primary and related videos.
+- Copy tags to the clipboard.
 
 ### 🖼️ YouTube Thumbnail Downloader
 
@@ -26,7 +24,7 @@ A **Spring Boot-based web application** that provides useful tools for YouTube c
 ### 📊 YouTube Video Data Retriever
 
 - Enter a YouTube video URL or ID.
-- Retrieve complete video information including:
+- Retrieve video information including:
   - Video title
   - Channel name
   - Published date
@@ -38,9 +36,9 @@ A **Spring Boot-based web application** that provides useful tools for YouTube c
 
 ### 🌙 Light & Dark Mode
 
-- Light mode and dark mode.
-- Theme preference is saved using browser `localStorage`.
-- Consistent **Blue + Green + Slate** color combination.
+- Switch between light and dark themes.
+- Save the selected theme using browser `localStorage`.
+- Consistent modern UI design.
 - Responsive user interface.
 
 ---
@@ -68,29 +66,33 @@ YoutubeTools
 ├── src
 │   └── main
 │       ├── java
-│       │   └── com.YoutubeTools
-│       │       ├── Config
-│       │       │   └── WebClientConfig.java
-│       │       │
-│       │       ├── Controller
-│       │       │   ├── PageController.java
-│       │       │   ├── ThumbnailController.java
-│       │       │   ├── YoutubeTagsController.java
-│       │       │   └── YoutubeVideoController.java
-│       │       │
-│       │       ├── Model
-│       │       │   ├── SearchVideo.java
-│       │       │   ├── Video.java
-│       │       │   └── VideoDetails.java
-│       │       │
-│       │       ├── Service
-│       │       │   ├── ThumbnailService.java
-│       │       │   └── YoutubeService.java
-│       │       │
-│       │       └── YoutubeToolsApplication.java
+│       │   └── com
+│       │       └── YoutubeTools
+│       │           │
+│       │           ├── Config
+│       │           │   └── WebClientConfig.java
+│       │           │
+│       │           ├── Controller
+│       │           │   ├── PageController.java
+│       │           │   ├── ThumbnailController.java
+│       │           │   ├── YoutubeTagsController.java
+│       │           │   └── YoutubeVideoController.java
+│       │           │
+│       │           ├── Model
+│       │           │   ├── SearchVideo.java
+│       │           │   ├── Video.java
+│       │           │   └── VideoDetails.java
+│       │           │
+│       │           ├── Service
+│       │           │   ├── ThumbnailService.java
+│       │           │   └── YoutubeService.java
+│       │           │
+│       │           └── YoutubeToolsApplication.java
 │       │
 │       └── resources
+│           │
 │           ├── static
+│           │
 │           ├── templates
 │           │   ├── fragments
 │           │   │   └── navbar.html
@@ -109,8 +111,8 @@ YoutubeTools
 │   └── Dark_Theme.png
 │
 ├── pom.xml
-└── README.md
-````
+├── README.md
+└── .gitignore
 
 ---
 
