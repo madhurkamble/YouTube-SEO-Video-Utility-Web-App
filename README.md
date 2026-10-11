@@ -1,13 +1,3 @@
-Yes. According to your screenshot, the **exact screenshot filenames** are:
-
-* `Home_SC.png`
-* `SEO_Tags_1.png`
-* `SEO_Tags_2.png`
-* `Thumbnail_Downloader.png`
-* `YT_Video_Data_Retriever.png`
-* `Dark_Theme.png`
-
-Here is the **complete updated README.md** using those exact names and your actual GitHub/LinkedIn links:
 
 ````markdown
 # 🎬 YouTube Tools
